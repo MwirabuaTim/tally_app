@@ -27,6 +27,7 @@
                             <div class="darkblue-header darkblue">
                     <h5>TOTAL CUSTOMERS</h5>
                             </div>
+
                             <h1><i class="fa fa-3x f900"><%= Visit.where(:business_id => current_business.id).distinct.count('customer_id') %></i></h1>
                 <p></p>
                 <footer>
@@ -42,7 +43,11 @@
                   <div class="darkblue-header darkergrey">
                     <h5>AVG VISITS PER CUSTOMER</h5>
                   </div>
+                  <% if Visit.where(:business_id => current_business.id).distinct.count('customer_id') != 0 %>
   <h1><i class="fa fa-3x f900"><%= Visit.where(:business_id => current_business.id).count / Visit.where(:business_id => current_business.id).distinct.count('customer_id') %></i></h1>
+                  <% else %>
+                   <h1><i class="fa fa-3x f900">0</i></h1>
+                  <% end %>
                 <p></p>
                 <footer>
                   <div class="centered">

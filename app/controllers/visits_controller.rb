@@ -51,6 +51,7 @@ class VisitsController < ApplicationController
     @reward = current_business.reward
     @since_last_reward = @visit_count % @req_visits.to_i
 
+
     # Check how many visits customer has until reward and display in notice
     if @visit_count < @req_visits.to_i
       @notice = '<br/> You only need to visit ' + 
@@ -65,7 +66,12 @@ class VisitsController < ApplicationController
       (@req_visits.to_i - @since_last_reward).to_s + ' more times to earn ' + @reward.to_s + '!'
     end
 
-    # Save visit and show message
+    # binding.pry
+    # render json: @customer
+    # render json: @req_visits
+    # render json: @since_last_reward
+    # render json: @visit
+    # # Save visit and show message
     respond_to do |format|
       if @visit.save
         format.html { redirect_to new_visit_path, notice: '<h1>THANKS FOR COMING!</h1> ' + @notice}

@@ -8,6 +8,9 @@ gem 'will_paginate', '3.0.4'
 gem 'devise'
 gem 'role_model'
 
+# to help inspect during development
+gem 'pry', :group => :development
+
 # twitter bootstrap helpers gem, e.g., alerts etc...
 gem 'twitter-bootswatch-rails-helpers'
 gem 'therubyracer'

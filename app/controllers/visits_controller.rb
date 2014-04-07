@@ -23,7 +23,7 @@ class VisitsController < ApplicationController
     @name = current_business.name
     @logo = current_business.logo
     @photo = current_business.photo
-    # render layout: false
+    render layout: false
 
   end
 
@@ -49,7 +49,12 @@ class VisitsController < ApplicationController
     @visit_count=Visit.where(customer_id:@customer.id, business_id:current_business.id).count + 1
     @req_visits = current_business.req_visits
     @reward = current_business.reward
-    @since_last_reward = @visit_count % @req_visits.to_i
+
+    if @req_visits.to_i != 0
+      @since_last_reward = @visit_count % @req_visits.to_i
+    else
+      @since_last_reward = 0
+    end
 
 
     # Check how many visits customer has until reward and display in notice

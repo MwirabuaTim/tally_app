@@ -1,26 +1,27 @@
 TallyApp2::Application.routes.draw do
-  resources :rewards
 
   devise_for :admins
   # devise_for :admins do get '/admins/sign_out' => 'devise/sessions#destroy' end
-  devise_for :businesses, :controllers => { :registrations => "registrations" }
+  devise_for :businesses
+  # , :controllers => { :registrations => "registrations" }
+  devise_for :customers
 
   authenticated :business do
   root :to => 'static_pages#home', as: :authenticated
   end
   root :to => 'static_pages#frontpage'
+
+  resources :visits
+  resources :customers
+  resources :rewards
+  get 'businesses/:id/visits' => 'visits#forBusiness', as: :business_visits
+  put 'rewards/:id' => 'rewards#update', as: :update_reward
   
-  devise_for :customers
   match '/frontpage',    to: 'static_pages#frontpage',    via: 'get'
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/customer_home', to: 'static_pages#customer_home', via: 'get'
-  resources :visits
-  resources :customers
-  get 'businesses/:id/visits' => 'visits#forBusiness', as: :business_visits
-
-  put 'rewards/:id' => 'rewards#update', as: :update_reward
   get 'signup' => 'application#signup', as: :signup
   get 'signin' => 'application#signin', as: :signin
 

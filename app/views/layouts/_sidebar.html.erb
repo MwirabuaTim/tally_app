@@ -8,7 +8,7 @@
               <ul class="sidebar-menu" id="nav-accordion">
               
               	  <h5 class="centered"><%= @name %></h5>
-              	  	
+                    
                   <li class="mt">
                       <a <%= request.fullpath == customer_home_path ?  'class="active"' : '' %> href="<%= root_path %>">
                           <i class="fa fa-dashboard"></i>
@@ -27,6 +27,13 @@
                           <li><a  href="panels.html">Panels</a></li>
                           <li><a  href="font_awesome.html">Font Awesome</a></li>
                       </ul> -->
+                  </li>
+              	  	
+                  <li class="mt">
+                      <a <%= request.fullpath == edit_business_registration_path ?  'class="active"' : '' %> href="<%= edit_business_registration_path %>">
+                          <i class="fa fa-dashboard"></i>
+                          <span>Edit Business</span>
+                      </a>
                   </li>
 
               </ul>

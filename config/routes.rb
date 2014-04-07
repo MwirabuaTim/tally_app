@@ -2,8 +2,7 @@ TallyApp2::Application.routes.draw do
 
   devise_for :admins
   # devise_for :admins do get '/admins/sign_out' => 'devise/sessions#destroy' end
-  devise_for :businesses
-  # , :controllers => { :registrations => "registrations" }
+  devise_for :businesses, :controllers => { :registrations => "registrations" }
   devise_for :customers
 
   authenticated :business do

@@ -1,19 +1,17 @@
 <!-- = stylesheet_link_tag "new_visit", media: "all" %> -->
 <link rel="stylesheet" href="/custom/new_visit.css">
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <img class ="behind" src="<%= image_path(@photo) %>">
 
-    
-
-		<div id="centerPseudo" style="margin-top:150px;">
-			<h1 class ="offer">Welcome to <%= @name %>!</h1>
-			<img class="offer" src="<%= image_path(@logo) %>">
-			<p class ="offer"> Check in <%= @req_visits %> times to receive <%= @reward %>!</p>
-			<div id="newcustform" class="new_visit"><%= render 'form' %></div>
-			<p class="small text-center" style="color:white;">By inputting your email address you are agreeing to receive information emails from Tally. You can unsubscribe from these at any time.</p>
-		</div>
+<div id="centerPseudo" style="margin-top:150px;">
+	<h1 class ="offer">Welcome to <%= @name %>!</h1>
+	<img class="offer" src="<%= image_path(@logo) %>">
+	<p class ="offer"> Check in <%= @req_visits %> times to receive <%= @reward %>!</p>
+	<div id="newcustform" class="new_visit"><%= render 'form' %></div>
+	<p class="small text-center" style="color:white;">By inputting your email address you are agreeing to receive information emails from Tally. You can unsubscribe from these at any time.</p>
+</div>
 <div id="back">
-<%= link_to 'Exit', root_path %>
+	<%= link_to 'Exit', root_path %>
 </div>
 
 

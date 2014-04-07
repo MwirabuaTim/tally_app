@@ -4,48 +4,43 @@
   <title>TallyApp2</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-    <% javascript_include_tag "dashio_theme/advanced-datatable/media/src/DataTables.js", "data-turbolinks-track" => true %>
+  <% javascript_include_tag "dashio_theme/advanced-datatable/media/src/DataTables.js", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 
   <%= render 'layouts/shim' %>
 
 </head>
 <body>
-    <section id="container">
+  <section id="container">
 
-
-
-
-                <% if business_signed_in? %>
-                  <%= render 'layouts/header' %>
-                   <%= render 'layouts/sidebar' %>
-
-                      <section id="main-content">
-                      <section class="wrapper">
-                        <div class="col-lg-9 mt">      
-              <% end %>    
-                                            <% if notice %>
-                                            <div class="alert alert-notice hide">
-                                            <%= notice.html_safe %>
-                                            </div>
-                                          <% end %>
-                                          <% if alert %>
-                                            <p class="alert alert-error"><%= alert %></p>
-                                          <% end %>
-           
-                                        <%= yield %>
-                  </div>
-        <% if business_signed_in? %>
-                   <%= render 'layouts/rightsidebar' %>
-
-
-                </section>
-              </section>         
+  <% if business_signed_in? %>
+    
+    <%= render 'layouts/header' %>
+    <%= render 'layouts/sidebar' %>   
+    <section id="main-content">
+      <section class="wrapper">
+          <% if notice %>
+          <div class="alert alert-notice">
+            <%= notice.html_safe %>
           </div>
-<%= render 'layouts/footer' %>
-        <% end %>
-  </section>
-  
+          <% end %>
+          <% if alert %>
+          <p class="alert alert-error"><%= alert %></p>
+          <% end %>
+        <div class="col-lg-9 mt">      
+          <%= yield %>
+        </div>
+        <%= render 'layouts/rightsidebar' %>
+
+
+      </section>
+    </section>      
+    <%= render 'layouts/footer' %>
+
+  <% end %>
+
+</section>
+
 </body>
 </html>
 
